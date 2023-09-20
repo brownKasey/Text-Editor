@@ -25,13 +25,31 @@ export const putDb = async (content) => {
   const store = tx.objectStore("jate");
 
   //use add method on the store to pass content in
-  const request = store.add();
+  const request = store.add({ id: 1, value: content });
 
   const result = await request;
   console.log("🚀 - data saved to the database", result);
 };
 
-// TODO: Add logic for a method that gets all the content from the database
-export const getDb = async () => console.error("getDb not implemented");
+export const getDb = async () => {
+  console.error("getDb not implemented");
+
+  //creates a connection to the database and the version #
+  const contactDb = await openDB("jate", 1);
+
+  //creates a new transaction and specifies the database and data privledges
+  const tx = contactDb.transaction("jate", "readonly");
+
+  //open up the desired object store
+  const store = tx.objectStore("jate");
+
+  //use add method on the store to pass content in
+  const request = store.getAll();
+
+  //confirmation of the request
+  const result = await request;
+  console.log("result.value", result);
+  return result;
+};
 
 initdb();
