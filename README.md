@@ -22,6 +22,8 @@ A text editor that runs in the browser!
 
 Go to the website: https://jatepleasework-5274179ebe2f.herokuapp.com/
 
+![Screenshot](./images/Jate-Screenshot.png)
+
 ## Credits
 
 ## Author
